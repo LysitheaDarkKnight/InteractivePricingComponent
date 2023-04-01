@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <title>Frontend Mentor | Interactive pricing component</title>
+</head>
+<body>
+  <main class="container">
+
+    <!--Title-->
+    <div class="title">
+      <h1 class="sign-up">Simple, traffic-based pricing <br>
+        <span> Sign-up for our 30-day trial. <br class="mobile-line-break"> No credit card required.
+        </span> 
+      </h1>
+    </div>
+
+    <!--Card-->
+    <div class="card">
+
+      <!--Pageviews and price per month and per year with a slider-->
+      <div class="card__info">
+        <p class="pageviews"><span class="pageviews__value">100</span>K PAGEVIEWS</p>
+        <input type="range" class="slider" min="0" max="32.00" step="0.01" src="images/icon-slider.svg">
+        <p class="price month" style="display:block;"><span>$<label for="range">16.00</label></span>/ month</p>
+        <p class="price year" style="display:none;"><span>$<label for="range">144.00</label></span>/ year</p>
+      </div>
+
+      <!--Billing Toggle-->
+      <div class="card__billing">
+        <p class="monthly">Monthly Billing</p>
+        <div class="switch">
+          <div class="dot"></div>
+        </div>
+        <p class="yearly">Yearly Billing</p>
+        <p class="discount"><span class="mobile-only">-</span> 25% <span class="desktop-only">discount</span></p>
+      </div>
+
+      <!--Border-->
+      <div class="border"></div>
+
+      <!--Trial Start-->
+      <div class="card__trial">
+        <ul class="features">
+          <li><img src="images/icon-check.svg" alt="check">Unlimited websites</li>
+          <li><img src="images/icon-check.svg" alt="check">100% data ownership</li>
+          <li><img src="images/icon-check.svg" alt="check">Email reports</li>
+        </ul>
+
+        <a href="#">Start my trial</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

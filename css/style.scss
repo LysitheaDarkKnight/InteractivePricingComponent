@@ -1,0 +1,278 @@
+@use 'functions' as *;
+@use 'colors' as *;
+@use 'fonts' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
+
+// UNIVERSAL
+
+body{
+  font-size: 15px;
+  font-family: $manrope;
+  color: $grayish-blue-color;
+  position: relative;
+  background-color: $very-pale-blue-color;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+.container{
+    @include set-flex($flex-direction: column, $align-items: center, $justify-content: center);
+    height: 100vh;
+    background-image: url(../images/bg-pattern.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    padding: 4rem 0;
+    .title{
+        margin-bottom: 3.3333rem;
+        background-image: url(../images/pattern-circles.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        h1{
+            text-align: center;
+            color: $dark-desaturated-blue-color;
+            span{
+                font-size: 1rem;
+                font-weight: 600;
+                color: $grayish-blue-color;
+                .mobile-line-break{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .card{
+        background-color: $white-color;
+        padding: 3rem 3rem 2rem 3rem;
+        border-radius: 0.5rem;
+        width: min(34rem, 90%);
+        box-shadow: 0 0.95rem 1.9rem rgba(189, 204, 255, 0.15), 0 0.66rem 0.66rem rgba(189, 204, 255,0.12);
+        &__info{
+            @include set-grid($align-items: center, $justify-content: center);
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            .pageviews{
+                letter-spacing: 3px;
+                font-weight: 800;
+            }
+            .slider{
+                grid-column: 1/3;
+                grid-row: 2/3;
+            }
+
+            // NOT WORKING ON CHROME
+
+            input[type=range]::-moz-range-track, input[type=range]::-moz-range-progress,  input[type=range]::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-thumb{
+                border-radius: 4px;
+                -webkit-appearance: none;
+                width: 100%;
+                height: 0.5rem;
+                cursor: pointer;
+            }
+
+            input[type=range]::-moz-range-track, input[type=range]::-webkit-slider-runnable-track {
+                -webkit-appearance: none;
+                background-color: $light-grayish-blue-color; 
+              }
+
+            input[type=range]::-moz-range-progress {
+                background-color: $soft-cyan-color;
+              }
+              
+            input[type=range]::-moz-range-thumb, input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 2rem;
+                width: 2rem;
+                background: url(../images/icon-slider.svg) no-repeat center;
+                background-color: $strong-cyan-color;
+                border-radius: 50%;
+                border: 1px solid $strong-cyan-color;
+                margin-top: -7px;
+                cursor: pointer;
+              }
+
+            input[type=range]::-moz-range-thumb:hover{
+                box-shadow: 0px 0px 0.8rem 0.6rem rgba(165, 243, 235, 0.49);
+            }
+
+            input[type=range]::-moz-range-thumb:active{
+                cursor: grab;
+            }
+
+            .price{
+                justify-self: flex-end;
+                span{
+                    color: $dark-desaturated-blue-color;
+                    font-weight: 800;
+                    font-size: 2rem;
+                    
+                }
+            }
+        }
+
+        &__billing, &__trial{
+            font-size: 0.8rem;
+        }
+
+        &__billing{
+            @include set-flex($align-items: center, $justify-content: center);
+            gap: 1rem;
+            position: relative;
+            margin-top: 2.5rem;
+            .switch{
+                position: relative;
+                width: 2.7rem;
+                height: 1.4rem;
+                border-radius: 1rem;
+                background-color: $light-grayish-blue-2-color;
+                cursor: pointer;
+                transition: 0.5s ease-out;
+                .dot{
+                    position: absolute;
+                    height: 0.9rem;
+                    width: 0.9rem;
+                    left: 0.2rem;
+                    top: 0.25rem;
+                    background-color: $white-color;
+                    border-radius: 50%;
+                    display: inline-block;
+                    z-index: 3;
+                    transition: 0.5s ease-out;
+                }
+
+                .dot.active{
+                    left: 1.6rem;
+                }
+                
+                &:hover{
+                    background-color: $soft-cyan-color;
+                }
+            }
+
+
+            .discount{
+                position: absolute;
+                right: 0.3rem;
+                font-size: 0.7rem;
+                color: $light-red-color;
+                background-color: $light-grayish-red-color;
+                border-radius: 1rem;
+                padding: 0.2rem 0.4rem;
+                .mobile-only{
+                    display: none;
+                }
+            }
+        }
+
+        .border{
+            border-top: 1px $light-grayish-blue-color solid;
+            margin: 2.8rem -3rem 2rem -3rem;
+        }
+
+        &__trial{
+            @include set-flex($justify-content: space-between, $align-items: center);
+            .features{
+                list-style: none;
+                @include set-grid;
+                gap: 0.5rem;
+                img{
+                    margin-right: 0.8rem;
+                }
+            }
+
+            a{
+                color: $pale-blue-color;
+                background-color: $dark-desaturated-blue-color;
+                text-decoration: none;
+                padding: 0.7rem 3.1rem;
+                border-radius: 3rem;
+                box-shadow: 0 0.4rem 0.5rem rgba(142, 141, 158, 0.16), 0 0.2rem 0.45rem rgba(142, 141, 158, 0.23);
+                transition: 0.5s ease-in;
+                &:hover{
+                    color: $very-pale-blue-color;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 36.8rem){
+    .container{
+        .title{
+            margin-bottom: 2rem;
+            h1{
+                font-size: 1.3rem;
+                > br{
+                    margin-bottom: 0.5rem;
+                }
+                span{
+                    font-size: 1rem;
+                    .mobile-line-break{
+                        display: block;
+                    }
+                }
+            }
+        }
+    
+        .card{
+            padding: 2rem 1.5rem;
+            &__info{
+                @include set-grid($align-items: stretch, $justify-content: stretch);
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                .pageviews, .price{
+                    justify-self: center;
+                }
+                .slider{
+                    grid-column: auto;
+                    grid-row: auto;
+                }
+                  
+                input[type='range']::-moz-range-thumb, input[type='range']::-webkit-slider-thumb {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                  }
+
+            }
+
+    
+            &__billing{
+                gap: 0.6rem;
+                .discount{
+                    right: -1rem;
+                    .mobile-only{
+                        display: inline;
+                    }
+                    .desktop-only {
+                        display: none;
+                    }
+                }
+            }
+    
+            .border{
+                margin: 2.8rem -1.5rem 2rem -1.5rem;
+            }
+    
+            &__trial{
+                @include set-flex($align-items: center, $flex-direction: column);
+                gap: 2rem;
+                .features{
+                    img{
+                        margin-right: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
